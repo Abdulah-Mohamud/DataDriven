@@ -1,13 +1,13 @@
-package testcases;
+package com.scp.testcases;
 
 
+import com.scp.base.BaseTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import base.BaseTest;
 import utilities.DataUtil;
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BaseTest {
 
 	@Test(dataProviderClass = DataUtil.class, dataProvider = "dp1")
 	public void doLogin(String username, String password) throws InterruptedException {

@@ -1,4 +1,4 @@
-package base;
+package com.scp.base;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,13 +32,6 @@ import utilities.ExcelReader;
 import utilities.MonitoringMail;
 
 public class BaseTest {
-
-	/*
-	 * WebDriver - done TestNG - done Database - done Mail - done Extent Reports -
-	 * done Log4j - done Excel - done Properties - done Screenshots - done Keywords
-	 * - done
-	 * 
-	 */
 
 	public static WebDriver driver;
 	private static Properties or = new Properties();

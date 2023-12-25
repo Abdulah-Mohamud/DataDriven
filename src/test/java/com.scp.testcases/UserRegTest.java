@@ -1,9 +1,9 @@
-package testcases;
+package com.scp.testcases;
 
 
+import com.scp.base.BaseTest;
 import org.testng.annotations.Test;
 
-import base.BaseTest;
 import utilities.DataUtil;
 
 public class UserRegTest extends BaseTest {

@@ -1,10 +1,10 @@
-package testcases;
+package com.scp.testcases;
 
+import com.scp.base.BaseTest;
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import base.BaseTest;
 import utilities.DataUtil;
 
 public class OpenAccountTest extends BaseTest {
