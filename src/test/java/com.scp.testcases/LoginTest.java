@@ -1,18 +1,22 @@
-package com.scp.testcases;
+package testcases;
 
-import org.openqa.selenium.By;
+
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.scp.base.TestBase.OR;
-import static com.scp.base.TestBase.driver;
+import base.BaseTest;
+import utilities.DataUtil;
 
-public class LoginTest {
-    @Test
-    public static void LoginAsBankManager() throws InterruptedException {
-        System.out.println("Hi");
-        System.setProperty("chromedriver.exe", "C:\\Users\\abdul\\IdeaProjects\\DataDriven\\src\\test\\resources\\executables\\chromedriver.exe");
-        driver.findElement(By.cssSelector(OR.getProperty("bmlBtn"))).click();
-        Thread.sleep(3000);
+public class LoginTest extends BaseTest{
 
-    }
+	@Test(dataProviderClass = DataUtil.class, dataProvider = "dp1")
+	public void doLogin(String username, String password) throws InterruptedException {
+		
+		type("username_ID",username);
+		Thread.sleep(2000);
+	}
+	
+	
+	
+	
 }

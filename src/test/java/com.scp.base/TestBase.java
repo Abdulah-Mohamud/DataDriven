@@ -1,8 +1,10 @@
 package com.scp.base;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -28,6 +30,7 @@ public class TestBase {
     public static Properties OR = new Properties();
     public static Properties config = new Properties();
     public static FileInputStream fis;
+    public static Logger log = Logger.getLogger("devpinoyLogger");
 
     @BeforeSuite
     public void setUp() throws IOException {
@@ -37,17 +40,23 @@ public class TestBase {
         FileInputStream fis2 = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\OR.properties");
 
         config.load(fis);
+        log.debug("Config file loaded!");
         OR.load(fis2);
+        log.debug("Config file loaded!");
 
         if (config.getProperty("browser").equals("firefox")){
             System.setProperty("geckodriver.exe", System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\geckodriver.exe");
             driver = new FirefoxDriver();
+            log.debug("Firefox Launched");
         }else if (config.getProperty("browser").equals("chrome")){
             System.setProperty("chromedriver.exe", System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\chromedriver.exe");
             driver = new ChromeDriver();
-
+            log.debug("Chrome Launched");
         } else if (config.getProperty("browser").equals("ie")) {
             System.setProperty("IEDriverServer.exe", System.getProperty("user.dir") + "\\src\\test\\resources\\executables\\IEDriverServer.exe");
+            driver = new InternetExplorerDriver();
+            log.debug("IE Launched");
+
         }
 
         driver.get(config.getProperty("testsiteurl"));
@@ -57,11 +66,23 @@ public class TestBase {
 
     }
 
+    public static Boolean isElementPresent(By by){
+        try {
+            driver.findElement(by);
+            return true;
+
+        }catch (NoSuchElementException e){
+            return false;
+        }
+
+
+    }
 
     @AfterSuite
     public void tearDown(){
         if (driver!=null){
             driver.quit();
+            log.debug("Test Execution completed");
         }
 
     }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+
 import static com.scp.base.TestBase.OR;
 import static com.scp.base.TestBase.driver;
 
@@ -33,8 +34,9 @@ public class LaunchChrome {
         FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
 
         config.load(fis);*/
-        driver.get("https://www.google.com");
+        //driver.get("https://www.google.com");
+        driver.get("https://www.way2automation.com/angularjs-protractor/banking/#/login");
 
-        driver.quit();
+        //driver.quit();
 
 }}
